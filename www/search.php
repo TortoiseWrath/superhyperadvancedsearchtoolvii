@@ -53,9 +53,9 @@ require_once('ebay.php');
 	</script>
 
 	<meta charset = "utf-8">
-		<title>Super Hyper Advanced Search Tool VII</title>
+		<title>SHAST VII</title>
 		<div style="text-align: center;">
-			<h1>Super Hyper Advanced Search Tool VII</h1>
+			<h1 style="font-family: 'Arial Narrow'; font-weight: lighter">Super Hyper Advanced Search Tool VII</h1>
 			<div class = 'row' >
 				<form action="search.php" method="get">
 					<input type="text" name="q" placeholder="Search..." value="<?=isset($_GET['q'])?$_GET['q']:''?>"/>
