@@ -27,15 +27,17 @@ require_once('ebay.php');
 			align-self: center;
 			padding: 0;
 			margin: 0;
-			width: 600px;
-			height: 200px;
+			width: 75%;
+			height: 20em;
 			list-style: none;
 			display: flex;
 			justify-content: space-evenly;
 			flex-wrap: nowrap;
-			border-bottom: 1px solid #ccc;
-			border-left: 1px solid #ccc;
+			border-bottom: 1pt solid #ccc;
+			border-left: 1pt solid #ccc;
 			margin: 1em;
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		.graph-cell {
@@ -50,18 +52,17 @@ require_once('ebay.php');
 			transition: .25s;
 		}
 	</style>
-	<ol><meta charset = "utf-8">
+	<meta charset = "utf-8">
 		<title>Super Hyper Advanced Search Tool VII</title>
 		<div style="text-align: center;">
 			<h1>Super Hyper Advanced Search Tool VII</h1>
 			<div class = 'row' >
 				<form action="search.php" method="post">
-					Search: <input type="text" name="query" placeholder="Search..." />
+					Search: <input type="text" name="query" placeholder="Search..." value="<?=isset($_POST['query'])?$_POST['query']:''?>"/>
 					<input type="submit" />
 				</form>
 			</div>
 		</div>
-	</body>
 	<?php
 		if($_POST):
 			$results = search($_POST['query']);
