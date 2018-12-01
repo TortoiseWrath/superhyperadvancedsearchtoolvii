@@ -1,7 +1,7 @@
 
 <?php
 
-$numBins = 16;
+$numBins = 32;
 $maxPages = 4;
 
 $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
@@ -62,7 +62,7 @@ function searchPage($query, $page = 1) {
 	if($resp->ack != "Success") return $results;
 
 	foreach($resp->searchResult->item as $item) {
-		if($item->listingInfo->listingType === "Auction") continue;
+		if($item->listingInfo->listingType == "Auction") continue;
 		$result = new searchResult;
 		if(strtolower(substr($item->title, 0, 6)) == "lot of") {
 			$lotOf = intval(substr($item->title, 6));
@@ -70,7 +70,13 @@ function searchPage($query, $page = 1) {
 			if($lotOf !== 0) $result->qty = $lotOf;
 		}
 		$result->title = $item->title;
-		$result->price = floatval($item->sellingStatus->currentPrice) + floatval($item->shippingInfo->shippingServiceCost);
+		$result->price = floatval($item->shippingInfo->shippingServiceCost);
+		if($item->listingInfo->buyItNowAvailable == "true") {
+			$result->price += floatval($item->listingInfo->convertedBuyItNowPrice);
+		}
+		else {
+			$result->price += floatval($item->sellingStatus->convertedCurrentPrice);
+		}
 		$result->url = $item->viewItemURL;
 		$results[] = $result;
 	}
