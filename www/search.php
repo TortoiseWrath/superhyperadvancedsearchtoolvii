@@ -50,8 +50,44 @@ require_once('ebay.php');
 		.graph-cell:hover {
 			background: #2f9cff;
 			transition: .25s;
+			cursor: pointer;
 		}
 	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript">
+		var current = $('#dummy');
+
+		function fadeInto(bin) {
+			/*
+			newDiv = $('div.bin'+bin);
+			current.stop(true).fadeOut(500, function() {
+				$(this).remove();
+			});
+			current = newDiv;
+			current.fadeIn(500);
+			*/
+			var newDiv = $('div.bin'+bin);
+			console.log('div.bin'+bin);
+			current.hide();
+			current = newDiv;
+			current.show();
+			return false;
+		}
+
+		$(document).ready(function() {
+			for(var i = 0; i < <?=$numBins?>; i++) {
+				$('li.bin'+i).click(function(){
+					fadeInto(parseInt($(this).attr('class').substring(14)));
+				});
+				$('div.bin'+i).hide();
+			}
+		});
+	</script>
+
 	<meta charset = "utf-8">
 		<title>Super Hyper Advanced Search Tool VII</title>
 		<div style="text-align: center;">
@@ -79,7 +115,7 @@ require_once('ebay.php');
 			?>
 			<ul class="graph">
 				<?php foreach($bins->bins as $bindex=>$bin): ?>
-					<li class="graph-cell" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
+					<li class="graph-cell bin<?=$bindex?>" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
 				<?php endforeach; ?>
 			</ul>
 			<?php
@@ -88,7 +124,7 @@ require_once('ebay.php');
 					<?php
 					$minPrice = $bindex * $bins->increment;
 					$maxPrice = $minPrice + $bins->increment - 0.01;
-					echo "Bin $bindex (\$".number_format($minPrice, 2)," - \$".number_format($maxPrice,2)."): " . count($bin) . " items" ?>
+					echo "<div class=\"bin$bindex\">Bin $bindex (\$".number_format($minPrice, 2)," - \$".number_format($maxPrice,2)."): " . count($bin) . " items" ?>
 				</strong><br>
 				<ol class="bin bin<?=$bindex?>">
 					<?php foreach($bin as $item): ?>
@@ -99,7 +135,8 @@ require_once('ebay.php');
 							<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=number_format($item->price, 2)?>)
 						</li>
 					<?php endforeach; ?>
-				</ol>
+				</ol></div>
 			<?php endforeach;
 		endif;?>
-	</ol>
+
+	<div id="dummy"></div>
