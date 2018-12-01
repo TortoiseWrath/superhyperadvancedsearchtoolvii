@@ -33,6 +33,9 @@ require_once('ebay.php');
 			display: flex;
 			justify-content: space-evenly;
 			flex-wrap: nowrap;
+			border-bottom: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+			margin: 1em;
 		}
 
 		.graph-cell {
