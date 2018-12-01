@@ -141,8 +141,8 @@ if($_POST):
 	foreach($bins->bins as $bindex=>$bin): ?>
 		<strong>
 			<?php
-			$minPrice = $bindex * $bins->increment;
-			$maxPrice = $minPrice + $bins->increment - 0.01;
+			$minPrice = $bindex * $bins->increment + 0.01;
+			$maxPrice = $minPrice + $bins->increment;
 			echo "Bin $bindex (\$".number_format($minPrice, 2)," - \$".number_format($maxPrice,2)."): " . count($bin) . " items" ?>
 		</strong><br>
 		<ol class="bin bin<?=$bindex?>">
