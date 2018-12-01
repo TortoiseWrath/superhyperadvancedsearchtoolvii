@@ -75,7 +75,7 @@ require_once('ebay.php');
 			?>
 			<ul class="graph">
 				<?php foreach($bins->bins as $bindex=>$bin): ?>
-					<li class="graph-cell bin<?=$bindex?>" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
+					<li class="graph-cell" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
 				<?php endforeach; ?>
 			</ul>
 			<?php

@@ -109,7 +109,7 @@ function bin($results) {
 	$bins = new histogram;
 	$bins->increment = getMaxPrice($results) / $numBins;
 	foreach($results as $item) {
-		$bin = floor((floor($item->price * 100) / 100 - 0.01) / $bins->increment);
+		$bin = floor((floor($item->price/$item->qty * 100) / 100 - 0.01) / $bins->increment);
 		if(!isset($bins->bins[$bin])) $bins->bins[$bin] = array();
 		$bins->bins[$bin][] = $item;
 	}
