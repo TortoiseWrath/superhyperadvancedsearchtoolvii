@@ -13,47 +13,7 @@ require_once('ebay.php');
 
 
 <!DOCTYPE html>
-	<style>
-		body {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			font-family: "fira-sans-2", Verdana, sans-serif;
-		}
-
-		.graph {
-			align-items: flex-end;
-			align-self: center;
-			padding: 0;
-			margin: 0;
-			width: 75%;
-			height: 20em;
-			list-style: none;
-			display: flex;
-			justify-content: space-evenly;
-			flex-wrap: nowrap;
-			border-bottom: 1pt solid #ccc;
-			border-left: 1pt solid #ccc;
-			margin: 1em;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.graph-cell {
-			background: #0f7ade;
-			width: 6.25%;
-			margin-left: 2px;
-			margin-right: 2px;
-			transition: .25s;
-		}
-		.graph-cell:hover {
-			background: #2f9cff;
-			transition: .25s;
-			cursor: pointer;
-		}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -88,13 +48,12 @@ require_once('ebay.php');
 	</script>
 
 	<meta charset = "utf-8">
-		<title>Super Hyper Advanced Search Tool VII</title>
+		<title>SHAST VII</title>
 		<div style="text-align: center;">
-			<h1>Super Hyper Advanced Search Tool VII</h1>
+			<h1 style="font-family: 'Arial Narrow'; font-weight: lighter">Super Hyper Advanced Search Tool VII</h1>
 			<div class = 'row' >
 				<form action="search.php" method="post">
-					Search: <input type="text" name="query" placeholder="Search..." value="<?=isset($_POST['query'])?$_POST['query']:''?>"/>
-					<input type="submit" />
+					<input type="text" name="query" placeholder="Search..." value="<?=isset($_POST['query'])?$_POST['query']:''?>"/>
 				</form>
 			</div>
 		</div>
@@ -102,7 +61,6 @@ require_once('ebay.php');
 		if($_POST):
 			$results = search($_POST['query']);
 			$maxprice = getMaxPrice($results);
-			echo "Highest price = \$".number_format($maxprice, 2)."<br>";
 
 			$bins = bin($results);
 			$bincrement = $bins->increment;
@@ -114,8 +72,28 @@ require_once('ebay.php');
 			?>
 			<ul class="graph">
 				<?php foreach($bins->bins as $bindex=>$bin): ?>
-					<li class="graph-cell bin<?=$bindex?>" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
+					<li class="graph-cell bin<?=$bindex?> tooltip" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;">
+						<span class="tooltiptext">$MIN-$MAX</span>
+					</li>
 				<?php endforeach; ?>
+			</ul>
+			<ul class = ranges>
+				<li class ="range" style="text-align: left;">0</li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range"></li>
+				<li class = "range" style="text-align: right;"><?=$maxprice?></li>
 			</ul>
 			<?php
 			foreach($bins->bins as $bindex=>$bin): ?>
