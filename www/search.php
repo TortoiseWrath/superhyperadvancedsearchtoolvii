@@ -11,6 +11,18 @@ class searchResult {
 	public $qty = 1;
 }
 
+function getMaxPrice($results) {
+	$maxprice = 0.00;
+
+	foreach ($results as $item) {
+		if ($item->price > $maxprice) {
+			$maxprice = $item->price;
+		}
+	}
+
+	return $maxprice;
+}
+
 function searchPage($query, $page = 1) {
 	global $endpoint;
 
@@ -97,6 +109,8 @@ Search: <input type="text" name="query" />
 <?php
 if($_POST):
 	$results = search($_POST['query']);
+	$maxprice = getMaxPrice($results);
+	echo "Highest price = $" . $maxprice;
 	foreach($results as $item): ?>
 		<li>
 		<?php if($item->qty > 1): ?>
