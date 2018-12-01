@@ -43,10 +43,13 @@ function search($query) {
 ?>
 
 <!DOCTYPE html>
-<title>search</title>
+<form action="search.php" method="post">
+Search: <input type="text" name="query" />
+<input type="submit" />
+</form>	
 
 <?php
-$results = search('intel slacr');
+$results = search($_POST['query']);
 foreach($results->item as $item):
 	if($item->listingInfo->listingType == "Auction") continue;
 	?>
