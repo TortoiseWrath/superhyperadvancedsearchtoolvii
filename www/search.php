@@ -3,7 +3,15 @@
 
 $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
 
-function search($query) {
+
+class searchResult {
+	public $title;
+	public $price;
+	public $url;
+	public $qty = 1;
+}
+
+function search($query, $offset = 0) {
 	global $endpoint;
 
 	// Create the XML request to be POSTed
@@ -34,10 +42,26 @@ function search($query) {
 	curl_close($session);                                   // close the session
 
 	$resp = simplexml_load_string($responsexml);
-	if($resp->ack == "Success") return $resp->searchResult;
+	if($resp->ack !== "Success") return false;
 
-	return false;
+	$results = array();
+	foreach($resp->searchResult->item as $item) {
+		if($item->listingInfo->listingType === "Auction") continue;
+		$result = new searchResult;
+		if(strtolower(substr($item->title, 0, 6)) == "lot of") {
+			$lotOf = intval(substr($item->title, 6));
+			if($lotOf === 0) $lotOf = intval(substr($item->title, 7));
+			if($lotOf !== 0) $result->qty = $lotOf;
+		}
+		$result->title = $item->title;
+		$result->price = floatval($item->sellingStatus->currentPrice) + floatval($item->shippingInfo->shippingServiceCost);
+		$result->url = $item->viewItemURL;
+		$results[] = $result;
+	}
+
+	return $results;
 }
+
 
 
 ?>
@@ -47,9 +71,7 @@ function search($query) {
 
 <?php
 $results = search('intel slacr');
-foreach($results->item as $item):
-	if($item->listingInfo->listingType == "Auction") continue;
-	?>
-	<a href="<?=$item->viewItemURL?>"><?=$item->title?></a> <?=$item->listingInfo->listingType?> ($<?=floatval($item->sellingStatus->currentPrice) + floatval($item->shippingInfo->shippingServiceCost)?>)
+foreach($results as $item):?>
+	<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=item->price?>)
 	<p>
 <?php endforeach; ?>
