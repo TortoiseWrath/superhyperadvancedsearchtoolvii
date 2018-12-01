@@ -22,7 +22,7 @@ function getMaxPrice($results) {
 		}
 	}
 
-	return $maxprice;
+	return number_format($maxprice, 2);
 }
 
 function searchPage($query, $page = 1) {
