@@ -45,7 +45,9 @@
 		justify-content: space-evenly;
 		flex-wrap: nowrap;
 	}
-
+	graph-cell span{
+		display:block;
+	}
 	.range{
 		text-align: center;
 		width: 6.25%
@@ -87,7 +89,7 @@
 </style>
 <head><meta charset = "utf-8">
 	<title>SHAST VII</title>
-	<div style="text-align: center;"><h1>Super Hyper Advanced Search Tool VII</h1></div>
+	<div style="text-align: center;"><h1 style="font-family: 'Arial Narrow'; font-weight: lighter">Super Hyper Advanced Search Tool VII</h1></div>
 	<div class = 'row' >
 		<form>
 			<input type="text" name = "search" placeholder="Search..">
@@ -101,7 +103,7 @@
 <body>
 
 	<ul class="graph">
-		<li class="graph-cell" title = "Tooltip" style="height: 75%;"><span class="text">Tooltip text</span></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 75%;"></li>
 		<li class="graph-cell" title = "Tooltip" style="height: 33%;"></li>
 		<li class="graph-cell" title = "Tooltip" style="height: 60%;"></li>
 		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
