@@ -33,10 +33,61 @@
 		background: #2f9cff;
 		transition: .25s;
 	}
+
+	.ranges{
+		align-items: flex-end;
+		padding: 0;
+		margin: 0;
+		width: 600px;
+		height: 30px;
+		list-style: none;
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: nowrap;
+	}
+
+	.range{
+		text-align: center;
+		width: 6.25%
+	}
+	.graph-cell .text {
+		visibility: hidden;
+		width: 120px;
+		background-color: #555;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		margin-left: -60px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.graph-cell .text::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #555 transparent transparent transparent;
+	}
+
+	input[type = text]{
+		border-radius: 4px;
+		border:2px solid #ccc;
+		padding: 10px;
+		width: 40vw;
+	}
 </style>
 <head><meta charset = "utf-8">
-	<title>EbAvg</title>
-	<div style="text-align: center;"><h1>EbAvg</h1></div>
+	<title>SHAST VII</title>
+	<div style="text-align: center;"><h1>Super Hyper Advanced Search Tool VII</h1></div>
 	<div class = 'row' >
 		<form>
 			<input type="text" name = "search" placeholder="Search..">
@@ -50,22 +101,43 @@
 <body>
 
 	<ul class="graph">
-		<li class="graph-cell" style="height: 75%;"></li>
-		<li class="graph-cell" style="height: 33%;"></li>
-		<li class="graph-cell" style="height: 60%;"></li>
-		<li class="graph-cell" style="height: 40%;"></li>
-		<li class="graph-cell" style="height: 90%;"></li>
-		<li class="graph-cell" style="height: 10%;"></li>
-		<li class="graph-cell" style="height: 20%;"></li>
-		<li class="graph-cell" style="height: 40%;"></li>
-		<li class="graph-cell" style="height: 90%;"></li>
-		<li class="graph-cell" style="height: 40%;"></li>
-		<li class="graph-cell" style="height: 90%;"></li>
-		<li class="graph-cell" style="height: 10%;"></li>
-		<li class="graph-cell" style="height: 20%;"></li>
-		<li class="graph-cell" style="height: 40%;"></li>
-		<li class="graph-cell" style="height: 90%;"></li>
-		<li class="graph-cell" style="height: 40%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 75%;"><span class="text">Tooltip text</span></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 33%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 60%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 90%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 10%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 20%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 90%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 90%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 10%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 20%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 90%;"></li>
+		<li class="graph-cell" title = "Tooltip" style="height: 40%;"></li>
+	</ul>
+	<ul class = ranges>
+
+		<li class ="range" style="text-align: left;">0</li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range"></li>
+		<li class = "range" style="text-align: right;">100</li>
+
+
 	</ul>
 </body>
 </html>
