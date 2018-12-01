@@ -167,8 +167,7 @@ function bin($results) {
 			transition: .25s;
 		}
 	</style>
-	<ol>
-	<head><meta charset = "utf-8">
+	<ol><meta charset = "utf-8">
 		<title>EbAvg</title>
 		<div style="text-align: center;">
 			<h1>EbAvg</h1>
@@ -179,26 +178,6 @@ function bin($results) {
 				</form>
 			</div>
 		</div>
-	</head>
-	<body>
-		<ul class="graph">
-			<li class="graph-cell" style="height: 75%;"></li>
-			<li class="graph-cell" style="height: 33%;"></li>
-			<li class="graph-cell" style="height: 60%;"></li>
-			<li class="graph-cell" style="height: 40%;"></li>
-			<li class="graph-cell" style="height: 90%;"></li>
-			<li class="graph-cell" style="height: 10%;"></li>
-			<li class="graph-cell" style="height: 20%;"></li>
-			<li class="graph-cell" style="height: 40%;"></li>
-			<li class="graph-cell" style="height: 90%;"></li>
-			<li class="graph-cell" style="height: 40%;"></li>
-			<li class="graph-cell" style="height: 90%;"></li>
-			<li class="graph-cell" style="height: 10%;"></li>
-			<li class="graph-cell" style="height: 20%;"></li>
-			<li class="graph-cell" style="height: 40%;"></li>
-			<li class="graph-cell" style="height: 90%;"></li>
-			<li class="graph-cell" style="height: 40%;"></li>
-		</ul>
 	</body>
 	<?php
 		if($_POST):
@@ -208,6 +187,18 @@ function bin($results) {
 
 			$bins = bin($results);
 			$bincrement = $bins->increment;
+			$maxBinCount = 0;
+			foreach($bins->bins as $bin) {
+				if(count($bin) > $maxBinCount) $maxBinCount = count($bin);
+			}
+
+			?>
+			<ul class="graph">
+				<?php foreach($bins->bins as $bindex=>$bin): ?>
+					<li class="graph-cell bin<?=$bindex?>" style="height: <?=number_format(count($bin) / $maxBinCount * 100)?>%;"></li>
+				<?php endforeach; ?>
+			</ul>
+			<?php
 			foreach($bins->bins as $bindex=>$bin): ?>
 				<strong>
 					<?php
