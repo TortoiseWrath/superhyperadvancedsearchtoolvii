@@ -127,7 +127,6 @@ function bin($results) {
 
 
 <!DOCTYPE html>
-<<<<<<< HEAD
 	<style>
 		body {
 			display: flex;
@@ -223,36 +222,3 @@ function bin($results) {
 			<?php endforeach;
 		endif;?>
 	</ol>
-<form action="search.php" method="post">
-Search: <input type="text" name="query" />
-<input type="submit" />
-</form>
-<ol>
-<?php
-if($_POST):
-	$results = search($_POST['query']);
-	$maxprice = getMaxPrice($results);
-	echo "Highest price = \$".number_format($maxprice, 2)."<br>";
-
-	$bins = bin($results);
-	$bincrement = $bins->increment;
-	foreach($bins->bins as $bindex=>$bin): ?>
-		<strong>
-			<?php
-			$minPrice = $bindex * $bins->increment + 0.01;
-			$maxPrice = $minPrice + $bins->increment - 0.01;
-			echo "Bin $bindex (\$".number_format($minPrice, 2)," - \$".number_format($maxPrice,2)."): " . count($bin) . " items" ?>
-		</strong><br>
-		<ol class="bin bin<?=$bindex?>">
-			<?php foreach($bin as $item): ?>
-				<li>
-				<?php if($item->qty > 1): ?>
-					Lot of <?=$item->qty?>:
-				<?php endif; ?>
-					<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=number_format($item->price, 2)?>)
-				</li>
-			<?php endforeach; ?>
-		</ol>
-	<?php endforeach;
-endif;?>
-</ol>
