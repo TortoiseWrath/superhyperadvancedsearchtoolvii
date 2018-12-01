@@ -2,6 +2,7 @@
 <?php
 
 $numBins = 16;
+$maxPages = 4;
 
 $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
 
@@ -22,7 +23,7 @@ function getMaxPrice($results) {
 		}
 	}
 
-	return number_format($maxprice, 2);
+	return $maxprice;
 }
 
 function searchPage($query, $page = 1) {
@@ -80,6 +81,7 @@ function searchPage($query, $page = 1) {
 }
 
 function search($query) {
+	global $maxPages;
 	$results = array();
 	$page = 1;
 	$pageResult = searchPage($query);
@@ -90,7 +92,7 @@ function search($query) {
 		}
 		$page++;
 		$pageResult = searchPage($query, $page);
-		if($page > 10) break;
+		if($page > $maxPages) break;
 	}
 	usort($results, function($a, $b) {
 		return $a->price / $a->qty - $b->price / $b->qty;
@@ -132,16 +134,16 @@ Search: <input type="text" name="query" />
 if($_POST):
 	$results = search($_POST['query']);
 	$maxprice = getMaxPrice($results);
-	echo "Highest price = \$$maxprice<br>";
+	echo "Highest price = \$".number_format($maxprice, 2)."<br>";
 
 	$bins = bin($results);
 	$bincrement = $bins->increment;
 	foreach($bins->bins as $bindex=>$bin): ?>
 		<strong>
 			<?php
-			$minPrice = number_format($bindex * $bins->increment, 2);
-			$maxPrice = number_format($minPrice + $bins->increment, 2);
-			echo "Bin $bindex (\$$minPrice - \$$maxPrice): " . count($bin) . " items" ?>
+			$minPrice = $bindex * $bins->increment;
+			$maxPrice = $minPrice + $bins->increment - 0.01;
+			echo "Bin $bindex (\$".number_format($minPrice, 2)," - \$".number_format($maxPrice,2)."): " . count($bin) . " items" ?>
 		</strong><br>
 		<ol class="bin bin<?=$bindex?>">
 			<?php foreach($bin as $item): ?>
