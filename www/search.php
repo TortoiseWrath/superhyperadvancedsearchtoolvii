@@ -149,7 +149,7 @@ if($_POST):
 				<?php if($item->qty > 1): ?>
 					Lot of <?=$item->qty?>:
 				<?php endif; ?>
-					<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
+					<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=number_format($item->price, 2)?>)
 				</li>
 			<?php endforeach; ?>
 		</ol>
