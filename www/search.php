@@ -11,7 +11,7 @@ class searchResult {
 	public $qty = 1;
 }
 
-function search($query, $offset = 0) {
+function searchPage($query, $page = 1) {
 	global $endpoint;
 
 	// Create the XML request to be POSTed
@@ -20,7 +20,7 @@ function search($query, $offset = 0) {
 	$xmlrequest .= "<keywords>";
 	$xmlrequest .= $query;
 	$xmlrequest .= "</keywords>\n";
-	$xmlrequest .= "<paginationInput>\n  <entriesPerPage>100</entriesPerPage>\n</paginationInput>\n";
+	$xmlrequest .= "<paginationInput>\n  <entriesPerPage>100</entriesPerPage><pageNumber>$page</pageNumber>\n</paginationInput>\n";
 	$xmlrequest .= "</findItemsByKeywordsRequest>";
 
 	$headers = array(
@@ -42,9 +42,10 @@ function search($query, $offset = 0) {
 	curl_close($session);                                   // close the session
 
 	$resp = simplexml_load_string($responsexml);
-	if($resp->ack != "Success") return false;
 
 	$results = array();
+	if($resp->ack != "Success") return $results;
+
 	foreach($resp->searchResult->item as $item) {
 		if($item->listingInfo->listingType === "Auction") continue;
 		$result = new searchResult;
@@ -59,6 +60,27 @@ function search($query, $offset = 0) {
 		$results[] = $result;
 	}
 
+	$results[] = count($resp->searchResult->item);
+
+	return $results;
+}
+
+function search($query) {
+	$results = array();
+	$page = 1;
+	$pageResult = searchPage($query);
+	while(count($pageResult)) {
+		$results = array_merge($results, $pageResult);
+		if(array_pop($results) < 100) {
+			break;
+		}
+		$page++;
+		$pageResult = searchPage($query, $page);
+		if($page > 10) break;
+	}
+	usort($results, function($a, $b) {
+		return $a->price / $a->qty - $b->price / $b->qty;
+	});
 	return $results;
 }
 
@@ -71,15 +93,17 @@ function search($query, $offset = 0) {
 Search: <input type="text" name="query" />
 <input type="submit" />
 </form>
-
+<ol>
 <?php
 if($_POST):
 	$results = search($_POST['query']);
-	foreach($results as $item):
-		if($item->qty > 1): ?>
+	foreach($results as $item): ?>
+		<li>
+		<?php if($item->qty > 1): ?>
 			Lot of <?=$item->qty?>:
 		<?php endif; ?>
-		<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
-		<p>
+			<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
+		</li>
 	<?php endforeach;
 endif;?>
+</ol>
