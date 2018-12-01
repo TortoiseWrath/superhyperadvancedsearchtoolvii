@@ -48,9 +48,9 @@ require_once('ebay.php');
 		}
 	</style>
 	<ol><meta charset = "utf-8">
-		<title>EbAvg</title>
+		<title>Super Hyper Advanced Search Tool VII</title>
 		<div style="text-align: center;">
-			<h1>EbAvg</h1>
+			<h1>Super Hyper Advanced Search Tool VII</h1>
 			<div class = 'row' >
 				<form action="search.php" method="post">
 					Search: <input type="text" name="query" placeholder="Search..." />
