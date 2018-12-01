@@ -71,7 +71,6 @@ require_once('ebay.php');
 			current.fadeIn(500);
 			*/
 			var newDiv = $('div.bin'+bin);
-			console.log('div.bin'+bin);
 			current.hide();
 			current = newDiv;
 			current.show();
