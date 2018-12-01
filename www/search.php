@@ -34,7 +34,7 @@ function searchPage($query, $page = 1) {
 	$xmlrequest .= "<findItemsByKeywordsRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">\n";
 	$xmlrequest .= "<keywords>";
 	$xmlrequest .= $query;
-	$xmlrequest .= "</keywords>\n";
+	$xmlrequest .= "</keywords>\n<buyerPostalCode>35401</buyerPostalCode>";
 	$xmlrequest .= "<paginationInput>\n  <entriesPerPage>100</entriesPerPage><pageNumber>$page</pageNumber>\n</paginationInput>\n";
 	$xmlrequest .= "</findItemsByKeywordsRequest>";
 
