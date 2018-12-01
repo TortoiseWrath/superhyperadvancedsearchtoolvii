@@ -42,7 +42,7 @@ function search($query, $offset = 0) {
 	curl_close($session);                                   // close the session
 
 	$resp = simplexml_load_string($responsexml);
-	if($resp->ack !== "Success") return false;
+	if($resp->ack != "Success") return false;
 
 	$results = array();
 	foreach($resp->searchResult->item as $item) {
@@ -67,11 +67,19 @@ function search($query, $offset = 0) {
 ?>
 
 <!DOCTYPE html>
-<title>search</title>
+<form action="search.php" method="post">
+Search: <input type="text" name="query" />
+<input type="submit" />
+</form>
 
 <?php
-$results = search('intel slacr');
-foreach($results as $item):?>
-	<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=item->price?>)
-	<p>
-<?php endforeach; ?>
+if($_POST):
+	$results = search($_POST['query']);
+	foreach($results as $item):
+		if($item->qty > 1): ?>
+			Lot of <?=$item->qty?>:
+		<?php endif; ?>
+		<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
+		<p>
+	<?php endforeach;
+endif;?>
