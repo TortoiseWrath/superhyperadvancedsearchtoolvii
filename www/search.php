@@ -1,6 +1,8 @@
 
 <?php
 
+$numBins = 16;
+
 $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
 
 
@@ -96,6 +98,26 @@ function search($query) {
 	return $results;
 }
 
+class histogram {
+	public $bins = array();
+	public $increment;
+}
+
+function bin($results) {
+	global $numBins;
+	$bins = new histogram;
+	$bins->increment = getMaxPrice($results) / $numBins;
+	foreach($results as $item) {
+		$bin = floor($item->price / $bins->increment);
+		if(!isset($bins->bins[$bin])) $bins->bins[$bin] = array();
+		$bins->bins[$bin][] = $item;
+	}
+	for($i = 0; $i < $numBins; $i++) {
+		if(!isset($bins->bins[$i])) $bins->bins[$i] = array();
+	}
+	ksort($bins->bins);
+	return $bins;
+}
 
 
 ?>
@@ -110,14 +132,27 @@ Search: <input type="text" name="query" />
 if($_POST):
 	$results = search($_POST['query']);
 	$maxprice = getMaxPrice($results);
-	echo "Highest price = $" . $maxprice;
-	foreach($results as $item): ?>
-		<li>
-		<?php if($item->qty > 1): ?>
-			Lot of <?=$item->qty?>:
-		<?php endif; ?>
-			<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
-		</li>
+	echo "Highest price = \$$maxprice<br>";
+
+	$bins = bin($results);
+	$bincrement = $bins->increment;
+	foreach($bins->bins as $bindex=>$bin): ?>
+		<strong>
+			<?php
+			$minPrice = number_format($bindex * $bins->increment, 2);
+			$maxPrice = number_format($minPrice + $bins->increment, 2);
+			echo "Bin $bindex (\$$minPrice - \$$maxPrice): " . count($bin) . " items" ?>
+		</strong><br>
+		<ol class="bin bin<?=$bindex?>">
+			<?php foreach($bin as $item): ?>
+				<li>
+				<?php if($item->qty > 1): ?>
+					Lot of <?=$item->qty?>:
+				<?php endif; ?>
+					<a href="<?=$item->url?>"><?=$item->title?></a> ($<?=$item->price?>)
+				</li>
+			<?php endforeach; ?>
+		</ol>
 	<?php endforeach;
 endif;?>
 </ol>
