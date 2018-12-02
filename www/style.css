@@ -11,6 +11,7 @@ body {
 
 #loadingDiv {
 	width: 100%;
+	text-align: center;
 }
 
 input[type = text]{
@@ -31,11 +32,9 @@ input[type = text]:focus {
 }
 
 .loading-image {
-	height: 50%;
-	width: 50%;
+	height: 2in;
+	width: auto;
 	vertical-align: middle;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .graph {
