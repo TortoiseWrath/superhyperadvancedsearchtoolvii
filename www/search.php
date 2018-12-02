@@ -40,14 +40,18 @@ require_once('ebay.php');
 			$('.loading').hide();
 			$('.loading').removeClass('loading');
 			$('form').submit(function(){
-				$('ul.graph').hide();
-				$('div.xaxis').hide();
-				current.hide();
-				$('div#loadingDiv').show();
+				$('ul.graph').fadeOut(125);
+				$('div.xaxis').fadeOut(125);
+				current.fadeOut(125, function() {
+					$('div#loadingDiv').fadeIn(125);
+				});
 			});
 		});
 	  $( function() {
-	    $( document ).tooltip();
+	    $( document ).tooltip({
+			show: { effect: "fadeIn", duration: 125 },
+			hide: { effect: "fadeOut", duration: 125 }
+		});
 	  } );
 	</script>
 
