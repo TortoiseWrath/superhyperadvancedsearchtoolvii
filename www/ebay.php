@@ -90,8 +90,8 @@ function search($query) {
 			break;
 		}
 		$page++;
-		$pageResult = searchPage($query, $page);
 		if($page > $maxPages) break;
+		$pageResult = searchPage($query, $page);
 	}
 	usort($results, function($a, $b) {
 		return $a->price / $a->qty - $b->price / $b->qty;
