@@ -23,17 +23,11 @@ require_once('ebay.php');
 		function fadeInto(bin) {
 
 			newDiv = $('div.bin'+bin);
-			current.fadeOut(250, function() {
-				newDiv.fadeIn(250);
+			current.fadeOut(125, function() {
+				newDiv.fadeIn(125);
 			});
 			current = newDiv;
 
-			/*
-			var newDiv = $('div.bin'+bin);
-			current.hide();
-			current = newDiv;
-			current.show();
-			*/
 			return false;
 		}
 
@@ -56,12 +50,9 @@ require_once('ebay.php');
 		<title>SHAST VII</title>
 		<div style="text-align: center;">
 			<h1 style="font-family: 'Arial Narrow'; font-weight: lighter">Super Hyper Advanced Search Tool VII</h1>
-			<div class = 'row' >
-				<form action="search.php" method="get">
-					<input type="text" name="q" placeholder="Search..." value="<?=isset($_GET['q'])?$_GET['q']:''?>"/>
-					<input type="submit" value="Search" />
-				</form>
-			</div>
+			<form action="search.php" method="get">
+				<input type="text" name="q" placeholder="Search..." value="<?=isset($_GET['q'])?$_GET['q']:''?>"/>
+			</form>
 		</div>
 	<?php
 		if(isset($_GET['q'])):
