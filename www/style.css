@@ -2,6 +2,17 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+<<<<<<< HEAD
+	/* background-color: #b6ddeb; */
+	align-items: center;
+	font-family: "fira-sans-2", Verdana, sans-serif;
+	overflow-y: scroll;
+	color: #C2D5E5;
+	background-color: #243C56;
+}
+/*
+input[type = text]{
+=======
 	background-color: #b6ddeb;
 	align-items: center;	
 	font-family: "fira-sans-2", Verdana, sans-serif;
@@ -9,6 +20,7 @@ body {
 
 input[type = text]{
 	border-radius: 4px;
+>>>>>>> master
 	border: 0px;
 	border-radius: 32px;
 	background-color: #4f88bd;
@@ -21,7 +33,11 @@ input[type = text]{
 input[type = text]:hover{
 	background-color: #3e77ac;
 	transition: .25s;
+<<<<<<< HEAD
+} */
+=======
 }
+>>>>>>> master
 
 .graph {
 	align-items: flex-end;
@@ -34,15 +50,28 @@ input[type = text]:hover{
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: nowrap;
+<<<<<<< HEAD
+	border-bottom: 1pt solid #86ADCA;
+	border-left: 1pt solid #86ADCA;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 1em;
+=======
 	border-bottom: 1pt solid #ccc;
 	border-left: 1pt solid #ccc;
 	margin: 1em;
 	margin-left: auto;
 	margin-right: auto;
+>>>>>>> master
 }
 
 .graph-cell {
 	background: #4f88bd;
+<<<<<<< HEAD
+	background: #0f7ade;
+	background-color: #86ADCA;
+=======
+>>>>>>> master
 	width: 6.25%;
 	margin-left: 2px;
 	margin-right: 2px;
@@ -50,11 +79,132 @@ input[type = text]:hover{
 }
 
 .graph-cell:hover {
+<<<<<<< HEAD
+	/*background: #3e77ac;*/
+	background: #2f9cff;
+	background: #C2D5E5;
+=======
 	background: #3e77ac;
+>>>>>>> master
 	transition: .25s;
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
+
+p.count {
+	font-size: large;
+	font-weight: bold;
+}
+div.xaxis {
+	width: calc(75% + 2ex);
+	margin-left: auto;
+	margin-right: auto;
+	color: #86ADCA;
+	font-size: 10pt;
+	text-align: center;
+	padding-bottom: 1em;
+}
+div.xaxis>div.min {
+	float: left;
+}
+div.xaxis>div.max {
+	float: right;
+}
+div.xaxis>span {
+	font-style: italic;
+}
+input{
+	border-radius: 4px;
+	border:2px solid #C2D5E5;
+	padding: 10px;
+	background-color: #243C56;
+}
+input[type=text] {
+	width: 50em;
+}
+div#dummy {
+	font-size: large;
+	font-style: italic;
+	color: #86ADCA;
+}
+div.loading {
+	display: none;
+}
+div.bin {
+	width: 100%;
+	text-align: center;
+}
+ol.bin {
+	list-style-type: none;
+	display: block;
+	width: 75%;
+	padding: 0;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+ol.bin>li {
+	display: block;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+ol.bin>li>a {
+	width: calc(100% - 10.5em);
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+	text-decoration: none;
+	color: #86ADCA;
+}
+ol.bin>li.lot>a {
+	width: calc(100% - 20.5em);
+}
+ol.bin>li>span {
+	text-align: right;
+	display: inline-block;
+}
+ol.bin>li>span.price {
+	width: 7em;
+}
+ol.bin>li:not(.lot)>span.price, ol.bin>li.lot>span.eachlabel {
+	font-weight: bold;
+}
+ol.bin>li>span.qty {
+	width: 3em;
+}
+ol.bin>li>span.each {
+	width: 7em;
+	font-weight: bold;
+}
+ol.bin>li>span.eachlabel {
+	width: 3.5em;
+}
+ol.bin>li>span.price:before, ol.bin>li>span.each:before {
+	content: '$';
+}
+ol.bin>li.lot>span.price:after {
+	content: ' /';
+}
+ol.bin>li.lot>span.qty:after {
+	content: ' =';
+}
+ol.bin>li:not(.lot)>span:not(.price) {
+	display: none;
+}
+
+.ui-tooltip {
+	border: 1px solid #C2D5E5 !important;
+	box-shadow: 0 0 7px #86ADCA;
+	background-color: #C2D5E5;
+	color: #243C56;
+}
+
+/*
+=======
+>>>>>>> master
 .ranges{
 	align-items: flex-end;
 	padding: 0;
@@ -81,7 +231,11 @@ input[type = text]:hover{
 .tooltiptext {
 	pointer-events: none;
 }
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> master
 .tooltip .tooltiptext {
 	pointer-events: none;
     width: 120px;
@@ -96,9 +250,17 @@ input[type = text]:hover{
     left: 50%;
     margin-left: -60px;
 }
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> master
 .tooltip:hover .tooltiptext {
 	background-color: rgba(0, 0, 0, 128);
     color: rgba(255, 255, 255, 255);
     transition: .25s;
+<<<<<<< HEAD
+}*/
+=======
 }
+>>>>>>> master
