@@ -43,9 +43,15 @@ require_once('ebay.php');
 				$('li.bin'+i).click(function(){
 					fadeInto(parseInt($(this).attr('class').substring(14)));
 				});
-				$('div.bin'+i).removeClass('loading');
-				$('div.bin'+i).hide();
 			}
+			$('.loading').hide();
+			$('.loading').removeClass('loading');
+			$('form').submit(function(){
+				$('ul.graph').hide();
+				$('div.xaxis').hide();
+				current.hide();
+				$('div#loadingDiv').show();
+			});
 		});
 	  $( function() {
 	    $( document ).tooltip();
@@ -113,3 +119,6 @@ require_once('ebay.php');
 			<?php endforeach; ?>
 			<div id="dummy">Click a bar in the histogram to view listings in that price bin.</div>
 	<?php endif;?>
+<div class="loading" id="loadingDiv">
+	Loading.
+</div>
