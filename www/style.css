@@ -9,11 +9,6 @@ body {
 	background-color: #243C56;
 }
 
-#loadingDiv {
-	width: 100%;
-}
-
-/*
 input[type = text]{
 	font-size: 1.1em;
 	width: 60%;
@@ -29,6 +24,18 @@ input[type = text]:hover {
 input[type = text]:focus {
 	background-color: #1e3248;
 	transition: .25s;
+}
+
+#loadingDiv {
+	width: 100%;
+}
+
+.loading-image {
+	height: 50%;
+	width: 50%;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .graph {

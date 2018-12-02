@@ -111,5 +111,5 @@ require_once('ebay.php');
 			<div id="dummy">Click a bar in the histogram to view listings in that price bin.</div>
 	<?php endif;?>
 <div class="loading" id="loadingDiv">
-	Loading.
+	<img src="searchinganim.png" class="loading-image"/>
 </div>
