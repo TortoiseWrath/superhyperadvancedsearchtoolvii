@@ -9,6 +9,10 @@ body {
 	background-color: #243C56;
 }
 
+#loadingDiv {
+	width: 100%;
+}
+
 input[type = text]{
 	font-size: 1.1em;
 	width: 60%;
@@ -24,10 +28,6 @@ input[type = text]:hover {
 input[type = text]:focus {
 	background-color: #1e3248;
 	transition: .25s;
-}
-
-#loadingDiv {
-	width: 100%;
 }
 
 .loading-image {
@@ -185,51 +185,8 @@ ol.bin>li:not(.lot)>span:not(.price) {
 	color: #243C56;
 }
 
-/*
-.ranges{
-	align-items: flex-end;
-	padding: 0;
-	margin: 0;
-	width: 75%;
-	height: .25em;
-	list-style: none;
-	display: flex;
-	justify-content: space-evenly;
-	flex-wrap: nowrap;
+.maxbin {
+	position: absolute;
+	right: 87.5%;
+	top: 12.5rem;
 }
-
-.range{
-	text-align: center;
-	width: 6.25%;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
-.tooltiptext {
-	pointer-events: none;
-}
-
-.tooltip .tooltiptext {
-	pointer-events: none;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgba(255, 255, 255, 0);
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-}
-
-.tooltip:hover .tooltiptext {
-	background-color: rgba(0, 0, 0, 128);
-    color: rgba(255, 255, 255, 255);
-    transition: .25s;
-}*/
