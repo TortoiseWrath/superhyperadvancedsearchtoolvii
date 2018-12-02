@@ -30,6 +30,14 @@ input[type = text]:focus {
 	transition: .25s;
 }
 
+.loading-image {
+	height: 50%;
+	width: 50%;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .graph {
 	align-items: flex-end;
 	align-self: center;
