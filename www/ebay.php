@@ -1,5 +1,8 @@
 <?php
 
+$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
+$maxPages = 5;
+
 class searchResult {
 	public $title;
 	public $price;

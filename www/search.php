@@ -1,13 +1,6 @@
-
 <?php
-
 $numBins = 32;
-$maxPages = 5;
-
-$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
-
 require_once('ebay.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -47,12 +40,12 @@ require_once('ebay.php');
 				});
 			});
 		});
-	  $( function() {
-	    $( document ).tooltip({
+	  $(function() {
+	    $(document).tooltip({
 			show: { effect: "fadeIn", duration: 125 },
 			hide: { effect: "fadeOut", duration: 125 }
 		});
-	  } );
+	  });
 	</script>
 
 	<meta charset = "utf-8">
