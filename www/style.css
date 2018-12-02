@@ -19,6 +19,7 @@ input[type = text]{
 	width: 60%;
 	transition: .125s;
 	color: #c2d5e5;
+	text-align: center;
 }
 
 input[type = text]:hover {
