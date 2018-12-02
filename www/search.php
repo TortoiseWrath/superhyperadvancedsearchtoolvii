@@ -91,6 +91,7 @@ require_once('ebay.php');
 				<div class="min">$0</div>
 				<div class="max">$<?=number_format(ceil($numBins * $bins->increment))?></div>
 				<span>Price</span>
+				<div class="maxbin"><?=$maxBinCount?></div>
 			</div>
 			<?php
 			foreach($bins->bins as $bindex=>$bin): ?>
