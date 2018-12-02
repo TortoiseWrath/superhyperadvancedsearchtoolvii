@@ -2,7 +2,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-<<<<<<< HEAD
 	/* background-color: #b6ddeb; */
 	align-items: center;
 	font-family: "fira-sans-2", Verdana, sans-serif;
@@ -12,15 +11,6 @@ body {
 }
 /*
 input[type = text]{
-=======
-	background-color: #b6ddeb;
-	align-items: center;	
-	font-family: "fira-sans-2", Verdana, sans-serif;
-}
-
-input[type = text]{
-	border-radius: 4px;
->>>>>>> master
 	border: 0px;
 	border-radius: 32px;
 	background-color: #4f88bd;
@@ -33,11 +23,7 @@ input[type = text]{
 input[type = text]:hover{
 	background-color: #3e77ac;
 	transition: .25s;
-<<<<<<< HEAD
 } */
-=======
-}
->>>>>>> master
 
 .graph {
 	align-items: flex-end;
@@ -50,28 +36,17 @@ input[type = text]:hover{
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: nowrap;
-<<<<<<< HEAD
 	border-bottom: 1pt solid #86ADCA;
 	border-left: 1pt solid #86ADCA;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 1em;
-=======
-	border-bottom: 1pt solid #ccc;
-	border-left: 1pt solid #ccc;
-	margin: 1em;
-	margin-left: auto;
-	margin-right: auto;
->>>>>>> master
 }
 
 .graph-cell {
 	background: #4f88bd;
-<<<<<<< HEAD
 	background: #0f7ade;
 	background-color: #86ADCA;
-=======
->>>>>>> master
 	width: 6.25%;
 	margin-left: 2px;
 	margin-right: 2px;
@@ -79,18 +54,13 @@ input[type = text]:hover{
 }
 
 .graph-cell:hover {
-<<<<<<< HEAD
 	/*background: #3e77ac;*/
 	background: #2f9cff;
 	background: #C2D5E5;
-=======
-	background: #3e77ac;
->>>>>>> master
 	transition: .25s;
 	cursor: pointer;
 }
 
-<<<<<<< HEAD
 
 p.count {
 	font-size: large;
@@ -203,8 +173,6 @@ ol.bin>li:not(.lot)>span:not(.price) {
 }
 
 /*
-=======
->>>>>>> master
 .ranges{
 	align-items: flex-end;
 	padding: 0;
@@ -231,11 +199,7 @@ ol.bin>li:not(.lot)>span:not(.price) {
 .tooltiptext {
 	pointer-events: none;
 }
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> master
 .tooltip .tooltiptext {
 	pointer-events: none;
     width: 120px;
@@ -250,17 +214,9 @@ ol.bin>li:not(.lot)>span:not(.price) {
     left: 50%;
     margin-left: -60px;
 }
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> master
 .tooltip:hover .tooltiptext {
 	background-color: rgba(0, 0, 0, 128);
     color: rgba(255, 255, 255, 255);
     transition: .25s;
-<<<<<<< HEAD
 }*/
-=======
-}
->>>>>>> master
