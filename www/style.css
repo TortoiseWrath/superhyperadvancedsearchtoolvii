@@ -17,18 +17,18 @@ body {
 input[type = text]{
 	font-size: 1.1em;
 	width: 60%;
-	transition: .25s;
+	transition: .125s;
 	color: #c2d5e5;
 }
 
 input[type = text]:hover {
 	background-color: #1e3248;
-	transition: .25s;
+	transition: .125s;
 }
 
 input[type = text]:focus {
 	background-color: #1e3248;
-	transition: .25s;
+	transition: .125s;
 }
 
 .loading-image {
@@ -56,8 +56,6 @@ input[type = text]:focus {
 }
 
 .graph-cell {
-	background: #4f88bd;
-	background: #0f7ade;
 	background-color: #86ADCA;
 	width: 6.25%;
 	margin-left: 2px;
@@ -66,8 +64,6 @@ input[type = text]:focus {
 }
 
 .graph-cell:hover {
-	/*background: #3e77ac;*/
-	background: #2f9cff;
 	background: #C2D5E5;
 	transition: .25s;
 	cursor: pointer;
@@ -140,6 +136,10 @@ ol.bin>li>a {
 	display: inline-block;
 	text-decoration: none;
 	color: #86ADCA;
+}
+ol.bin>li>a:hover {
+	color: #C2D5E5;
+	transition: .125s;
 }
 ol.bin>li.lot>a {
 	width: calc(100% - 20.5em);
