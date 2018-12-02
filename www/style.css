@@ -9,6 +9,11 @@ body {
 	color: #C2D5E5;
 	background-color: #243C56;
 }
+
+#loadingDiv {
+	width: 100%;
+}
+
 /*
 input[type = text]{
 	border: 0px;
