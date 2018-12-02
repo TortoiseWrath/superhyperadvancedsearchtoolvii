@@ -21,7 +21,6 @@ require_once('ebay.php');
 		var current;
 
 		function fadeInto(bin) {
-
 			newDiv = $('div.bin'+bin);
 			current.fadeOut(125, function() {
 				newDiv.fadeIn(125);
