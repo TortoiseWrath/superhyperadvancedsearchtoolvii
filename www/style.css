@@ -21,6 +21,11 @@ input[type = text]{
 	color: #c2d5e5;
 }
 
+h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+
 input[type = text]:hover {
 	background-color: #1e3248;
 	transition: .125s;
