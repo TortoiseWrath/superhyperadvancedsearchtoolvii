@@ -62,7 +62,7 @@ require_once('ebay.php');
 	</script>
 
 	<meta charset = "utf-8">
-		<title>SHAST VII</title>
+		<title>SHAST VII<?=isset($_GET['q'])?': '.$_GET['q']:''?></title>
 		<div style="text-align: center;">
 			<h1 style="font-family: 'Arial Narrow'; font-weight: lighter"><a href="search.php">Super Hyper Advanced Search Tool VII</a></h1>
 			<form action="search.php" method="get">
