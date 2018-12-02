@@ -2,7 +2,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* background-color: #b6ddeb; */
 	align-items: center;
 	font-family: "fira-sans-2", Verdana, sans-serif;
 	overflow-y: scroll;
@@ -16,19 +15,21 @@ body {
 
 /*
 input[type = text]{
-	border: 0px;
-	border-radius: 32px;
-	background-color: #4f88bd;
 	font-size: 1.1em;
-	width: 80%;
-	padding: 16px;
+	width: 60%;
+	transition: .25s;
+	color: #c2d5e5;
+}
+
+input[type = text]:hover {
+	background-color: #1e3248;
 	transition: .25s;
 }
 
-input[type = text]:hover{
-	background-color: #3e77ac;
+input[type = text]:focus {
+	background-color: #1e3248;
 	transition: .25s;
-} */
+}
 
 .graph {
 	align-items: flex-end;
