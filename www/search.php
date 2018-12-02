@@ -31,7 +31,7 @@ require_once('ebay.php');
 		}
 
 		$(document).ready(function() {
-			current = $('div#dummy');
+			current = $('div#dummy, p.err');
 			for(var i = 0; i < <?=$numBins?>; i++) {
 				$('li.bin'+i).click(function(){
 					fadeInto(parseInt($(this).attr('class').substring(14)));
@@ -40,11 +40,17 @@ require_once('ebay.php');
 			$('.loading').hide();
 			$('.loading').removeClass('loading');
 			$('form').submit(function(){
-				$('ul.graph').fadeOut(125);
-				$('div.xaxis').fadeOut(125);
-				current.fadeOut(125, function() {
+				<?php if(isset($_GET['q'])): ?>
+					$('ul.graph').fadeOut(125);
+					$('div.xaxis').fadeOut(125);
+					current.fadeOut(125, function() {
+						$('div#loadingDiv').fadeIn(125);
+					});
+					console.log(current);
+				<?php else: ?>
 					$('div#loadingDiv').fadeIn(125);
-				});
+					console.log('b');
+				<?php endif; ?>
 			});
 		});
 	  $( function() {
@@ -114,6 +120,7 @@ require_once('ebay.php');
 			<?php endforeach; ?>
 			<div id="dummy">Click a bar in the histogram to view listings in that price bin.</div>
 	<?php endif;?>
+
 <div class="loading" id="loadingDiv">
 	<img src="searchinganim.png" class="loading-image"/>
 </div>
